@@ -1,17 +1,14 @@
 import React, {Component} from "react";
 
+let Container = (props) => <props.withContainer><MyData/></props.withContainer>
+
 class MyData extends Component {
     render() {
-        if (this.props.withContainer) {
-            return (
-                <this.props.withContainer>
-                    <MyData/>
-                </this.props.withContainer>
-            );
-        }
-        else {
-            return (<div>My Data is here</div>);
-        }
+        return (
+            <div>
+                {this.props.withContainer ? <Container {...this.props}/> : <div>My Data is here</div>}
+            </div>
+        );
     }
 }
 
